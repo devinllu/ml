@@ -1,8 +1,8 @@
 from sklearn.preprocessing import StandardScaler, LabelEncoder
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.ensemble import RandomForestClassifier
 
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report, roc_curve, auc
 
 import pandas as pd
 import numpy as np
@@ -30,4 +30,8 @@ model.fit(x_train, y_train)
 
 predictions = model.predict(x_test)
 print(f"Accuracy: {accuracy_score(y_test, predictions)}")
+print("Confusion Matrix:\n", confusion_matrix(y_test, predictions))
+print("Classification Report:\n", classification_report(y_test, predictions))
 
+cross_val_scores = cross_val_score(model, x, y, cv=5)
+print("Cross-Validation Scores:", cross_val_scores)
