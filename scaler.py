@@ -56,4 +56,4 @@ def show_scatter_plot():
 
 # show_histogram()
 # show_box_plot()
-show_scatter_plot()
+show_scatter_plot
